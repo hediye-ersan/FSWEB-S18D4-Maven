@@ -20,6 +20,7 @@ public class BurgerController {
         this.burgerDao = burgerDao;
     }
 
+    //CRUD islemleri
 
     @GetMapping
     public List<Burger> getAllBurgers(){
