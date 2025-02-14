@@ -20,7 +20,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<BurgerErrorResponse> handleGenericException(Exception ex) {
         log.error("Unexpected Error: {}", ex.getMessage());
-        BurgerErrorResponse errorResponse = new BurgerErrorResponse("An unexpected error occurred");
+        BurgerErrorResponse errorResponse = new BurgerErrorResponse("Unexpected error");
         return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

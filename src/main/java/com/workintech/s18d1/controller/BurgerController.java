@@ -37,16 +37,15 @@ public class BurgerController {
         return burgerDao.save(burger);
     }
 
-    @PutMapping("/{id}")
-    public Burger getUpdateBurger(@PathVariable Long id, @RequestBody Burger burger){
-        burger.setId(id);
+    @PutMapping
+    public Burger getUpdateBurger(@RequestBody Burger burger){
+        BurgerValidation.checkName(burger.getName());
         return burgerDao.update(burger);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> getDeleteBurger(@PathVariable Long id){
-        burgerDao.remove(id);
-        return ResponseEntity.noContent().build();
+    public Burger getDeleteBurger(@PathVariable long id){
+        return burgerDao.remove(id);
     }
 
     @GetMapping("/price/{price}")
@@ -61,8 +60,8 @@ public class BurgerController {
         return burgerDao.findByBreadType(btEnum);
     }
 
-    @GetMapping("/contents/{contents}")
-    public List<Burger> getFindByContent(@PathVariable("contents") String contents){
+    @GetMapping("/content/{content}")
+    public List<Burger> getFindByContent(@PathVariable("content") String contents){
         return burgerDao.findByContent(contents);
     }
 }
